@@ -25,7 +25,18 @@ class Pacman {
     }
 
     eat() {
-
+        for (let r = 0; r < gameMap.length; r++) {
+            for (let c = 0; c < gameMap[0].length; c++) {
+                if (
+                    gameMap[r][c] == 2 &&
+                    this.getMapX() == c &&
+                    this.getMapY() == r
+                ) {
+                    gameMap[r][c] = 3;
+                    score++;
+                }
+            }
+        }
     }
 
     moveBackwords() {
@@ -88,7 +99,7 @@ class Pacman {
         if (this.checkCollision()) {
             this.moveBackwords();
             this.direction = tempDirection;
-        }else{
+        } else {
             this.moveBackwords()
         }
     }
